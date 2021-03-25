@@ -1,0 +1,20 @@
+const Discord = require('discord.js');
+
+const client = new Discord.client();
+
+const prefix = ';t';
+
+client.once('ready', () => {
+    console.log('Tourneybot is online!');
+});
+
+client.on('message', message => {
+    if(!message.content.startsWith(prefix) || message.author.bot) return;
+
+    const args = message.content.slice(prefix.length).split(/ +/);
+    const command = args.shift().toLowerCase();
+
+    if(command === 'Ping'){
+        message.channel.send('pong!');
+    }
+});
